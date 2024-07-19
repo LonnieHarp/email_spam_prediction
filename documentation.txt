@@ -1,0 +1,65 @@
+Spam Prediction
+    - in this program I am using machine learning to decipher weather or not 
+    the email is Spam
+    - The data used to make this program is from kaggle. 
+    - Spam is fake. while ham is real
+
+Workflow To Follow
+    - mail data
+    - data pre processing
+    - split the data into training data
+    - will be using a logistic regression model
+
+    - give new mail the trained data will decide whether or not it is fake.
+
+Imports
+    - Pandas (pd) used to analyze big data sets and make conclusions
+    - train_test_split is used to split the data in half and train it
+    - TfidfVectorizer used so that the text can be read by the computer
+        -changes the text into meaningful numbers that fit machine learning
+        algorithm for predictions. 
+    - Logistic regression is the method in which I am using to train the data
+    this is capable of predicting the probability of whether or not the email will
+    be spam or not. 
+    - accuracy_score is to determine how accurate the data is.
+
+Data Collection
+    - Collecting data from the .cvs file mail_data
+    - Replacing all unused values with a null string. 
+
+Label Encoding
+    - Making the data more easily read by changing spam to 0 and ham to 1
+    - Separating data, massage and category. 
+
+Splitting the data
+    - split the data into two parts. one part will be the training data
+    while the other half will be the testing data. 
+    - All of the training data in the the x_train will end up in the y_train
+    and all of the test data in x_test will end up in y_test
+    - splitting the data uses the function train_test_split() that was imported.
+    - test_size determines how much of the data will be used. In my case i use 20% 
+    of the data as test data and the other 80% as training data.
+    - random_state is so the computer does not memorize the data as it comes in.
+
+Feature Extraction
+    - Going through the words in the document while keeping track of how many times a word is being used.
+    And will give the word a score depending on how many times the word is used. 
+    - Selecting what words we are going to look at to determine whether or not the email is spam
+        - min_df is the minimum score of the word, if less than 1 ignores it. if more than one include it
+        - stop_words are the words that are repeated multiple times. These words are ignored.
+        - lowercase changes all letters into lowercase for easier processing.
+    - x_train_features is fitting all the data into x_train using the feature extraction that was just made.
+
+Train The Model 
+    - model is using the imported logistic regression
+    - y_train contains all of the labels
+
+checking Accuracy
+    - predictions_training is pushing in the 80 percent that is being used to train the model
+    - then checking the accuracy of the prediction model with the y_train.
+    - repeated with the testing data.
+
+Predicting Spam
+    - First i am choosing one of the emails from the mail_data file at random and making sure that it has the contents of the email in hand
+    - pass in the massage that was choosin and extract the features of the email
+    - Then finally using the logistic regression algorithm predicting if it is spam or not. 
